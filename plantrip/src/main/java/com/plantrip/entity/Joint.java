@@ -14,15 +14,15 @@ public class Joint {    //여행 모집글 참여시 등록되는 테이블
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "joing_id")
+    @Column(name = "joint_id")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "user_id")
+    @JoinColumn(name = "user_id")
     private User userId;
 
     @OneToOne
-    @Column(name = "trip_board_id")
+    @JoinColumn(name = "trip_board_id")
     private TripBoard tripBoardId;
 
     private LocalDateTime dateTime;
