@@ -39,7 +39,7 @@ public class User {
 
     public static User createUser (UserFormDto userFormDto,
                                    PasswordEncoder passwordEncoder){
-        //사용자 회원가입, user 엔티티 생성하는 메소드
+        //사용자 회 원가입, user 엔티티 생성하는 메소드
         User user = new User();
         user.setName(userFormDto.getName());
         user.setEmail(userFormDto.getEmail());
@@ -47,6 +47,7 @@ public class User {
         //스프링 시큐리티 설정 클래스에 등록한 BCryptPasswordEncoder Bean을 파라미터로 넘겨서 비밀번호를 암호화한다
         user.setPassword(password);
         user.setRole(UserType.ADMIN);
+
         return user;
     }
 }
