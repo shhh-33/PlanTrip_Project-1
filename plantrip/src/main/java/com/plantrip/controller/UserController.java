@@ -21,12 +21,18 @@ public class UserController {
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
 
+
     //회원 가입
     @GetMapping(value = "/register")
     public String userForm(Model model){
         model.addAttribute("userFormDto", new UserFormDto());
         return "user/userForm";
     }
+
+    /**
+     * 회원가입 성공 : main으로 리다이렉트
+     * 회원정보 검증 및 중복회원 가입 조건에 의해 실패 : 다시 회원가입 페이지로 돌아가 실패이유 출력
+     */
 
     @PostMapping(value = "/register")
     public String newUser(@Validated UserFormDto userFormDto,
@@ -37,12 +43,17 @@ public class UserController {
 
         try {
            User user = User.createUser(userFormDto, passwordEncoder);
-           userService.saveUser(user);
+           userService.saveUser(user); //저장
         } catch (IllegalStateException e){
             model.addAttribute("errorMessage", e.getMessage());
             return "user/userForm";
         }
 
-        return "redirect:/";
+        return "redirect:/"; //성공
     }
+
+
+
+
+
 }
