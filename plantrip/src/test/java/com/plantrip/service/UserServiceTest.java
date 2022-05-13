@@ -33,7 +33,7 @@ public class UserServiceTest {
     }
 
     @Test
-    @DisplayName("회원 가입 테스트")
+    @DisplayName("회원 가입 테스트입니다")
     public void saveUserTest(){
         User user = createUser();
         User saveUser = userSerivce.saveUser(user);
