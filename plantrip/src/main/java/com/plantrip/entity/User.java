@@ -46,7 +46,8 @@ public class User {
         String password = passwordEncoder.encode(userFormDto.getPassword());
         //스프링 시큐리티 설정 클래스에 등록한 BCryptPasswordEncoder Bean을 파라미터로 넘겨서 비밀번호를 암호화한다
         user.setPassword(password);
-        user.setRole(UserType.USER);
+        user.setRole(UserType.ADMIN);
+
         return user;
     }
 }
