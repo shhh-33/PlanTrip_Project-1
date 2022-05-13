@@ -17,10 +17,10 @@ public class JointTrip {    // 참여 완료된 정보 확인 테이블
     private Long id;
 
     @OneToOne
-    @Column(name = "joint_id")
+    @JoinColumn(name = "joint_id")
     private Joint jointId;      //어떤 여행 모집글인지
 
     @OneToOne
-    @Column(name = "trip_id")
+    @JoinColumn(name = "trip_id")
     private Trip tripId;        //어떤 여행인지
 }
