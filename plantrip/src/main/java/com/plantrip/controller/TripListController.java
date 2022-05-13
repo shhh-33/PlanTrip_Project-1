@@ -17,7 +17,7 @@ public class TripListController {
     @Autowired
     private JoinTripService joinTripService;
 
-    @RequestMapping("/planList")
+    @RequestMapping("/tripList")
     public String tripList(HttpServletRequest request/*, @SessionAttribute("userId") Long userId*/, Model model) {
         HttpSession httpSession = request.getSession();
         //Long userId = (Long) httpSession.getAttribute("userId");
@@ -27,6 +27,6 @@ public class TripListController {
         if (result.isSuccess()) {
             model.addAttribute("tripList", result.getResultObject());
         }*/
-        return "planList";
+        return "TripList";
     }
 }
