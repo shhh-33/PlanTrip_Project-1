@@ -10,7 +10,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.plantrip.service.UserSerivce;
+import com.plantrip.service.UserService;
 import com.plantrip.dto.UserFormDto;
 
 @RequestMapping
@@ -18,7 +18,7 @@ import com.plantrip.dto.UserFormDto;
 @RequiredArgsConstructor
 public class UserController {
 
-    private final UserSerivce userSerivce;
+    private final UserService userService;
     private final PasswordEncoder passwordEncoder;
 
     //회원 가입
@@ -37,7 +37,7 @@ public class UserController {
 
         try {
            User user = User.createUser(userFormDto, passwordEncoder);
-           userSerivce.saveUser(user);
+           userService.saveUser(user);
         } catch (IllegalStateException e){
             model.addAttribute("errorMessage", e.getMessage());
             return "user/userForm";

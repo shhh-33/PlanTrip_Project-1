@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class UserServiceTest {
 
     @Autowired
-    UserSerivce userSerivce;
+    UserService userService;
 
     @Autowired
     PasswordEncoder passwordEncoder;
@@ -36,7 +36,7 @@ public class UserServiceTest {
     @DisplayName("회원 가입 테스트입니다")
     public void saveUserTest(){
         User user = createUser();
-        User saveUser = userSerivce.saveUser(user);
+        User saveUser = userService.saveUser(user);
 
         assertEquals(user.getEmail(), saveUser.getEmail());
         assertEquals(user.getName(), saveUser.getName());

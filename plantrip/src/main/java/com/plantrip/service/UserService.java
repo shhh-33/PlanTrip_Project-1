@@ -11,7 +11,7 @@ import javax.transaction.Transactional;
 @Service
 @Transactional //비즈니스 로직을 담당하는 서비스 계층 클래스에 선언
 @RequiredArgsConstructor //final이나 Nonnull이 붙은 필드에 생성자 생성
-public class UserSerivce {
+public class UserService {
 
     private final UserRepository userRepository; //AUtowired 어노테이션 없이 의존성 주입 가능
 
