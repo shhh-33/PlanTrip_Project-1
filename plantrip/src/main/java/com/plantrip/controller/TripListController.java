@@ -1,6 +1,6 @@
 package com.plantrip.controller;
 
-import com.plantrip.service.JoinTripService;
+import com.plantrip.service.AttendeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 public class TripListController {
 
     @Autowired
-    private JoinTripService joinTripService;
+    private AttendeeService attendeeService;
 
     @RequestMapping("/tripList")
     public String tripList(HttpServletRequest request/*, @SessionAttribute("userId") Long userId*/, Model model) {

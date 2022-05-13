@@ -1,14 +1,11 @@
 package com.plantrip.service;
 
-import com.plantrip.entity.Attendee;
 import com.plantrip.entity.Trip;
 import com.plantrip.repository.TripRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.xml.transform.Result;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class TripListService {
@@ -17,7 +14,7 @@ public class TripListService {
     private TripRepository tripRepository;
 
     @Autowired
-    private JoinTripService joinTripService;
+    private AttendeeService attendeeService;
 
     @Autowired
     private UserService userService;
@@ -28,6 +25,5 @@ public class TripListService {
         List<Trip> trips = tripRepository.findAll();
         return trips;
     }
-
 
 }
