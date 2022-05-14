@@ -87,9 +87,11 @@ public class TripListService {
     public Result<List<TripListDto>> getTripListByUser(Long userId) {
         try {
             Result<List<Attendee>> result = attendeeService.getByUser_UserId(userId);
+
             if (result.isSuccess()) {
                 List<Trip> trips = result.getResultObject().stream().map(x -> x.getTrip()).collect(Collectors.toList());
-                List<TripListDto> tripVOList = new ArrayList<>();
+                List<TripListDto> tripListDtos = new ArrayList<>();
+
                 trips.stream().forEach(
                         trip -> {
                             Result<Long> resultCount = attendeeService.getCountByTrip_TripId(trip.getTripId());
@@ -98,7 +100,7 @@ public class TripListService {
                                 count = 0L;
                             }
 
-                            tripVOList.add(
+                            tripListDtos.add(
                                     TripListDto.builder()
                                             .tripId(trip.getTripId())
                                             .startAt(DateUtil.localDateTime2str(trip.getStartAt(), "yyyy-MM-dd"))
@@ -111,7 +113,7 @@ public class TripListService {
                             );
                         }
                 );
-                return result.getResultCode().result(tripVOList);
+                return result.getResultCode().result(tripListDtos);
             } else {
                 return result.getResultCode().result();
             }
