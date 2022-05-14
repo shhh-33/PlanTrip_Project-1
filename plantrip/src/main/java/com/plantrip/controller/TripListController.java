@@ -14,19 +14,9 @@ import javax.servlet.http.HttpSession;
 @RequiredArgsConstructor
 public class TripListController {
 
-    @Autowired
-    private AttendeeService attendeeService;
-
     @RequestMapping("/tripList")
-    public String tripList(HttpServletRequest request/*, @SessionAttribute("userId") Long userId*/, Model model) {
-        HttpSession httpSession = request.getSession();
-        //Long userId = (Long) httpSession.getAttribute("userId");
-        Long userId = 1L;
+    public String tripList() {
 
-        /*Result<List<TripDto>> result = tripService.getTripListByUser(userId);
-        if (result.isSuccess()) {
-            model.addAttribute("tripList", result.getResultObject());
-        }*/
         return "TripList";
     }
 }
