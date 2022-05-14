@@ -1,6 +1,7 @@
 package com.plantrip.entity;
 
 
+import com.plantrip.constant.Role;
 import com.plantrip.dto.UserFormDto;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,45 +10,56 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 
+
 @Entity
-@Table(name="user")
-@Getter
-@Setter
+@Table(name="user_id")
+@Getter@Setter
 @ToString
-public class User {
+public class User extends BaseEntity {
 
     @Id
-    @Column(name="user_id")
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long id; //사용자 기본키 숫자
+    @Column(name = "user_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-    private String name; //사용자 이름
+    private String name;
 
-    @Column(unique = true)
-    private String email; //사용자 이메일
+    @Column(unique = true) //회원은 이메일을 통해 유일하게 구분, 동일한 값 DB에 들어올 수 없게
+    private String email;
 
-    private String password; //사용자 비밀번호
+    private String password;
 
-    private String phone; //사용자 전화번호
+    private String phone;
 
+<<<<<<< HEAD
     @Enumerated(EnumType.STRING)
     private UserType userType; //사용자와 관리자 구분
+=======
+    @Enumerated(EnumType.STRING) //eum 순서가 바뀌지 않도록록
+    private Role role;
+>>>>>>> Register2
 
-    private enum UserType {
-        ADMIN, USER
-    }
 
-    public static User createUser (UserFormDto userFormDto,
-                                   PasswordEncoder passwordEncoder){
-        //사용자 회원가입, user 엔티티 생성하는 메소드
+    /* User 엔티티를 생성하는 메소드
+      여기에서 관리를 한다면 코드가 변경되더라도 한군데만 수정하면 되는 이점
+     */
+    public static User createUser(UserFormDto userFormDto, PasswordEncoder passwordEncoder){
         User user = new User();
         user.setName(userFormDto.getName());
         user.setEmail(userFormDto.getEmail());
+        user.setPhone(userFormDto.getPhone());
+
+        //스프링 시큐리티 설정 클래스에 등록한 BCrptPasswordEncoder Bean을 파라미터로 넘겨서 비밀번호 암호화
         String password = passwordEncoder.encode(userFormDto.getPassword());
-        //스프링 시큐리티 설정 클래스에 등록한 BCryptPasswordEncoder Bean을 파라미터로 넘겨서 비밀번호를 암호화한다
         user.setPassword(password);
+<<<<<<< HEAD
         user.setUserType(UserType.ADMIN);
+=======
+        user.setRole(Role.ADMIN);
+>>>>>>> Register2
 
         return user;
+
     }
+
 }
