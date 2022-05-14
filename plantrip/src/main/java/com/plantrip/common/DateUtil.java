@@ -5,7 +5,9 @@ import java.time.format.DateTimeFormatter;
 
 public class DateUtil {
 
-    // String 으로 되어있는 날짜&시간을 실제 LocalDateTiem 타입으로 바꾸는 메서드
+    /**
+     * String 으로 되어있는 날짜&시간을 실제 LocalDateTiem 타입으로 바꾸는 메서드
+      */
     public static LocalDateTime str2LocalDateTime(String str, String format) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
         return LocalDateTime.parse(str, formatter);

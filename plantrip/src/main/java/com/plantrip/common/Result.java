@@ -1,9 +1,11 @@
 package com.plantrip.common;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-/*
+/**
     Result 클래스 : <리턴할 오브젝트 결과물 + 결과물에 대한 상태 코드> 를 묶어서 가져오기 (Exception보다 가시성이 좋다)
     제네릭 타입 <T> : 모든 타입의 변수들을 담을 수 있도록 임의 타입T로 미리 선언해 둔 것
+ 
+    -> 따라서 Service단에서 가져오는 결과물은 모두 Result<>로 묶어서 가져오기
  */
 public class Result<T> {
 
