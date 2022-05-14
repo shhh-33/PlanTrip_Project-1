@@ -31,13 +31,8 @@ public class User extends BaseEntity {
 
     private String phone;
 
-<<<<<<< HEAD
-    @Enumerated(EnumType.STRING)
-    private UserType userType; //사용자와 관리자 구분
-=======
     @Enumerated(EnumType.STRING) //eum 순서가 바뀌지 않도록록
     private Role role;
->>>>>>> Register2
 
 
     /* User 엔티티를 생성하는 메소드
@@ -52,11 +47,7 @@ public class User extends BaseEntity {
         //스프링 시큐리티 설정 클래스에 등록한 BCrptPasswordEncoder Bean을 파라미터로 넘겨서 비밀번호 암호화
         String password = passwordEncoder.encode(userFormDto.getPassword());
         user.setPassword(password);
-<<<<<<< HEAD
-        user.setUserType(UserType.ADMIN);
-=======
         user.setRole(Role.ADMIN);
->>>>>>> Register2
 
         return user;
 
