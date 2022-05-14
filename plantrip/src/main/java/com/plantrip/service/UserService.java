@@ -1,6 +1,8 @@
 package com.plantrip.service;
 
 
+import com.plantrip.common.Result;
+import com.plantrip.common.ResultCode;
 import com.plantrip.entity.User;
 import com.plantrip.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -9,6 +11,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Optional;
 
 /**
  * UserService가 UserDetailsService를 구현한다.
@@ -74,4 +79,27 @@ public class UserService implements UserDetailsService {
                 .roles(user.getRole().toString())
                 .build();
     }
+
+    public Result<List<User>> getUesrs() {
+        try {
+            List<User> users = userRepository.findAll();
+            return ResultCode.Success.result(users);
+        } catch (Exception e) {
+            return ResultCode.DBError.result();
+        }
+    }
+
+    public Result<User> getUesr(Long id) {
+        try {
+            Optional<User> optionalUser = userRepository.findById(id);
+            if (optionalUser.isPresent()) {
+                User user = optionalUser.get();
+                return ResultCode.Success.result(user);
+            }
+            return ResultCode.NOT_EXISTS_USER.result();
+        } catch (Exception e) {
+            return ResultCode.DBError.result();
+        }
+    }
+
 }
