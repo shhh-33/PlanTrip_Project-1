@@ -24,11 +24,11 @@ public class AttendeeService {
      * @param attendeeType
      * @return
      */
-    public Result save(User user, Trip trip, Attendee.AttendeeType attendeeType) {
+    public Result save(User user, Trip trip, Attendee.AttendeeRole attendeeType) {
         Attendee attendee = Attendee.builder()
                 .user(user)
                 .trip(trip)
-                .attendeeType(attendeeType)
+                .attendeeRole(attendeeType)
                 .build();
         try {
             attendeeRepository.save(attendee);
@@ -45,7 +45,7 @@ public class AttendeeService {
      * @return
      */
     public Result saveAsLeader(User user, Trip trip) {
-        return save(user, trip, Attendee.AttendeeType.LEADER);
+        return save(user, trip, Attendee.AttendeeRole.LEADER);
     }
 
     /**
@@ -55,7 +55,7 @@ public class AttendeeService {
      */
     public Result<List<Attendee>> getByUser_UserId(Long userId) {
         try {
-            List<Attendee> attendees = attendeeRepository.findByUser_UserId(userId);
+            List<Attendee> attendees = attendeeRepository.findByUserId(userId);
             return ResultCode.Success.result(attendees);
         } catch (Exception e) {
             return ResultCode.DBError.result();

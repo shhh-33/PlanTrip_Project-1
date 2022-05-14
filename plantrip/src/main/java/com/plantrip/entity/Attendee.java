@@ -30,9 +30,9 @@ public class Attendee {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "attendee_type")
-    private AttendeeType attendeeType;
+    private AttendeeRole attendeeRole;
 
-    public enum AttendeeType {
+    public enum AttendeeRole {
         LEADER, ATTENDEE
     }
 }
