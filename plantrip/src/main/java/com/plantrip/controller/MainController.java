@@ -22,8 +22,33 @@ public class MainController {
         return "createPlan";
     }
 
+<<<<<<< HEAD
     @RequestMapping("/tripBoard")
     public String tripBoard() {
         return "tripBoardForm";
     }
+=======
+    @RequestMapping("/tripList")
+    public String tripList() {
+        return "TripList";
+    }
+
+    @RequestMapping("/tripBoardForm")
+    public String tripBoardForm() {
+        return "tripBoardForm";
+    }
+
+    @RequestMapping("/tripBoardDetail")
+    public String tripBoardDetail() {
+        return "tripBoardDetail";
+    }
+
+    @RequestMapping("/tripBoardList")
+    public String tripBoardList() {
+        return "tripBoardList";
+    }
+
+
+
+>>>>>>> e331fb6763f19864b59ec8ed21e93f515955cb73
 }
