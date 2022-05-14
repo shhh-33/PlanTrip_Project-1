@@ -1,4 +1,4 @@
-package com.plantrip.controller;
+package com.plantrip.controller.api;
 
 import com.plantrip.common.Result;
 import com.plantrip.dto.TripListDto;
@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api")
 @RequiredArgsConstructor
 public class TripListController {
 

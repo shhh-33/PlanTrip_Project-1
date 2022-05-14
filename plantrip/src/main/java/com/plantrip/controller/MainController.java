@@ -26,9 +26,4 @@ public class MainController {
     public String tripBoard() {
         return "tripBoardForm";
     }
-
-    @RequestMapping("/tripList")
-    public String tripList() {
-        return "TripList";
-    }
 }

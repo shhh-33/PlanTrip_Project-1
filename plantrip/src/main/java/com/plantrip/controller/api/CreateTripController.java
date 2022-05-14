@@ -1,4 +1,4 @@
-package com.plantrip.controller;
+package com.plantrip.controller.api;
 
 import com.plantrip.common.Result;
 import com.plantrip.dto.CreateTripDto;
