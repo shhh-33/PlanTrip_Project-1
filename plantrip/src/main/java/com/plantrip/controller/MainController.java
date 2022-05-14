@@ -21,4 +21,9 @@ public class MainController {
     public String createPlan() {
         return "createPlan";
     }
+
+    @RequestMapping("/tripBoard")
+    public String tripBoard() {
+        return "tripBoardForm";
+    }
 }
