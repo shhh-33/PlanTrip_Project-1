@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.plantrip.service.UserService;
 import com.plantrip.dto.UserFormDto;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @RequestMapping
 @Controller
@@ -21,28 +22,22 @@ public class UserController {
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
 
-    //회원 가입
+
+
+    //회원 가입 페이지로 연결
     @GetMapping(value = "/register")
-    public String userForm(Model model){
+    public String userForm(Model model) {
         model.addAttribute("userFormDto", new UserFormDto());
-        return "user/userForm";
+        return "user/userRegisterForm";
     }
 
     @PostMapping(value = "/register")
-    public String newUser(@Validated UserFormDto userFormDto,
-                          BindingResult bindingResult, Model model){
-        if(bindingResult.hasErrors()){
-            return "user/userForm";
-        }
+    public String userForm(UserFormDto userFormDto){
 
-        try {
-           User user = User.createUser(userFormDto, passwordEncoder);
-           userService.saveUser(user);
-        } catch (IllegalStateException e){
-            model.addAttribute("errorMessage", e.getMessage());
-            return "user/userForm";
-        }
+        User user = User.createUser(userFormDto,passwordEncoder);
+        userService.saveUser(user);
 
         return "redirect:/";
     }
 }
+
