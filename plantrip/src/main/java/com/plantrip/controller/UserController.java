@@ -24,17 +24,17 @@ public class UserController {
     private final PasswordEncoder passwordEncoder;
 
 
-    //회원가입
+    //회원가입 페이지 이동
     @GetMapping(value = "/new")
-    public String userForm(Model model) {
-
-        model.addAttribute("userFormDto", new UserFormDto()); //회원 가입 화면으로부터 넘어오는 가입정보 담아서
-
-        return "user/userForm"; //타임리프로 넘김
+    public String signUp(){
+        return "user/signUp";
     }
-
-
-
+//    @GetMapping(value = "/new")
+//    public String userForm(Model model) {
+//
+//        model.addAttribute("userFormDto", new UserFormDto()); //회원 가입 화면으로부터 넘어오는 가입정보 담아서
+//        return "signUp"; //타임리프로 넘김
+//    }
 
     /**
      * 회원가입 성공 : main으로 리다이렉트
@@ -48,7 +48,7 @@ public class UserController {
     public String newUser(@Valid UserFormDto userFormDtoFormDto, BindingResult bindingResult, Model model){
 
         if(bindingResult.hasErrors()){
-            return "user/userForm";
+            return "signUp";
         }
 
         try {
@@ -56,7 +56,7 @@ public class UserController {
             userService.saveUser(user); //회원 정보 저장
         } catch (IllegalStateException e) {
             model.addAttribute("errorMessage", e.getMessage()); //중복 회원가입 에러메세지 뷰로 전달
-            return "user/userForm";
+            return "signUp";
         }
         return "redirect:/"; //성공시 리다이렉트
     }
@@ -64,13 +64,13 @@ public class UserController {
 
     @GetMapping(value = "/login")
     public String loginUser(){
-        return "/user/userLoginForm";
+        return "loginForm";
     }
 
     @GetMapping(value = "/login/error")
     public String loginError(Model model){
         model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호를 확인해주세요");
-        return "/user/userLoginForm";
+        return "loginForm";
     }
 
 
