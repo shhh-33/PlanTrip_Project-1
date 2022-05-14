@@ -1,15 +1,11 @@
 package com.plantrip.service;
 
 
-import com.plantrip.common.Result;
-import com.plantrip.common.ResultCode;
 import com.plantrip.entity.User;
 import com.plantrip.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Optional;
 
 /**
  * MemberService가 UserDetailsService를 구현한다.
@@ -36,19 +32,6 @@ public class UserService {
         User findMember = userRepository.findByEmail(user.getEmail());
         if(findMember != null){
             throw new IllegalStateException("이미 가입된 회원입니다.");
-        }
-    }
-
-    public Result<User> getUesr(Long id) {
-        try {
-            Optional<User> optionalUser = userRepository.findById(id);
-            if (optionalUser.isPresent()) {
-                User user = optionalUser.get();
-                return ResultCode.Success.result(user);
-            }
-            return ResultCode.NOT_EXISTS_USER.result();
-        } catch (Exception e) {
-            return ResultCode.DBError.result();
         }
     }
 
