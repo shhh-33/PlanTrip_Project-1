@@ -22,9 +22,9 @@ public class MainController {
         return "createPlan";
     }
 
-    @RequestMapping("/tripList")
-    public String tripList() {
-        return "TripList";
+    @RequestMapping("/tripBoard")
+    public String tripBoard() {
+        return "tripBoardForm";
     }
 
     @RequestMapping("/tripBoardForm")
@@ -41,7 +41,6 @@ public class MainController {
     public String tripBoardList() {
         return "tripBoardList";
     }
-
 
 
 }
