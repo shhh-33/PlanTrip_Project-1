@@ -29,10 +29,10 @@ public class Attendee {
     private User user;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "attendee_role")
-    private AttendeeRole attendeeRole;
+    @Column(name = "attendee_type")
+    private AttendeeType attendeeType;
 
-    public enum AttendeeRole {
+    public enum AttendeeType {
         LEADER, ATTENDEE
     }
 }
