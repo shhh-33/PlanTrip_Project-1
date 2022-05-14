@@ -1,7 +1,6 @@
+/*
 package com.plantrip.service;
 
-import com.plantrip.dto.UserFormDto;
-import com.plantrip.entity.User;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.TestPropertySource;
 
 import javax.transaction.Transactional;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional //테스트 실행 후 롤백 처리위한 어노테이션
@@ -48,3 +46,4 @@ public class UserServiceTest {
 
     }
 }
+*/

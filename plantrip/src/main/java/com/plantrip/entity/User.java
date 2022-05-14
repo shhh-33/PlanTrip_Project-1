@@ -31,7 +31,7 @@ public class User {
     private String phone; //사용자 전화번호
 
     @Enumerated(EnumType.STRING)
-    private UserType role; //사용자와 관리자 구분
+    private UserType userType; //사용자와 관리자 구분
 
     private enum UserType {
         ADMIN, USER
@@ -39,14 +39,14 @@ public class User {
 
     public static User createUser (UserFormDto userFormDto,
                                    PasswordEncoder passwordEncoder){
-        //사용자 회 원가입, user 엔티티 생성하는 메소드
+        //사용자 회원가입, user 엔티티 생성하는 메소드
         User user = new User();
         user.setName(userFormDto.getName());
         user.setEmail(userFormDto.getEmail());
         String password = passwordEncoder.encode(userFormDto.getPassword());
         //스프링 시큐리티 설정 클래스에 등록한 BCryptPasswordEncoder Bean을 파라미터로 넘겨서 비밀번호를 암호화한다
         user.setPassword(password);
-        user.setRole(UserType.ADMIN);
+        user.setUserType(UserType.ADMIN);
 
         return user;
     }
