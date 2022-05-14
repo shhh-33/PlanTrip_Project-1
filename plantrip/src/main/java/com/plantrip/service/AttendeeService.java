@@ -28,7 +28,7 @@ public class AttendeeService {
         }
     }
 
-    /*public Result<List<Attendee>> getByUser_UserId(Long userId) {
+    public Result<List<Attendee>> getByUser_UserId(Long userId) {
         try {
             List<Attendee> attendees = attendeeRepository.findByUser_UserId(userId);
             return ResultCode.Success.result(attendees);
@@ -37,7 +37,7 @@ public class AttendeeService {
         }
     }
 
-    public Result<Long> getCountByTrip_TripId(Long tripId) {
+    /*public Result<Long> getCountByTrip_TripId(Long tripId) {
         try {
             Long count = attendeeRepository.countByTrip_TripId(tripId);
             return ResultCode.Success.result(count);
