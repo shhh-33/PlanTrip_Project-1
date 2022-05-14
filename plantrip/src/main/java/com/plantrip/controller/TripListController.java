@@ -22,11 +22,6 @@ public class TripListController {
     @Autowired
     private TripListService tripListService;
 
-    @RequestMapping("/tripList")
-    public String tripList() {
-        return "TripList";
-    }
-
     @RequestMapping("/trips")
     public Result<List<Trip>> getTrips() {
         return tripListService.getTrips();
