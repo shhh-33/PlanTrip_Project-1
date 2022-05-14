@@ -28,7 +28,8 @@ public class CreateTripService {
     private UserService userService;
 
     /**
-     * saveTrip : Trip DB에 입력된 여행 정보 저장하기
+     * Trip DB에 입력된 여행 정보 저장하기
+     *
      * @param tripDTO : 날짜, 지역
      * @param userId : 현재 로그인한 user = 여행 생성자 = LEADER
      * @return 저장 로직 실행 후, 성공코드 전송
